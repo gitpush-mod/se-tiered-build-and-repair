@@ -26,7 +26,8 @@ namespace STGTieredBuildAndRepair.Cluster
             SyncBlockSettings.Settings.AllowBuild |
             SyncBlockSettings.Settings.GrindSmallestGridFirst |
             SyncBlockSettings.Settings.GrindNearFirst |
-            SyncBlockSettings.Settings.GrindIgnorePriorityOrder;
+            SyncBlockSettings.Settings.GrindIgnorePriorityOrder |
+            SyncBlockSettings.Settings.WeldIgnorePriorityOrder;
 
         /// <summary>
         /// Rebuilds clusters from all active NanobotSystems. O(N) on main thread.

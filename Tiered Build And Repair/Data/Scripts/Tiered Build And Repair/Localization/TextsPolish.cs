@@ -30,6 +30,8 @@ namespace STGTieredBuildAndRepair.Localization
             {"WeldMode_Skeleton",               "Tylko szkielet"},
             {"WeldPriority",                    "Priorytet spawania"},
             {"WeldPriority_Tooltip",            "Włącz/Wyłącz naprawę/budowę wybranych typów przedmiotów"},
+            {"WeldIgnorePriority",              "Ignoruj kolejność priorytetów"},
+            {"WeldIgnorePriority_Tooltip",      "Po zaznaczeniu kolejność priorytetów jest ignorowana, a bloki są spawane tylko według odległości. Status włączenia/wyłączenia typów bloków jest nadal respektowany."},
 
             {"GrindSettings_Headline",          "—————Ustawienia Rozbiórki—————"},
             {"GrindUseGrindColor",              "Użyj koloru rozbiórki"},

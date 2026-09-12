@@ -34,6 +34,8 @@ namespace STGTieredBuildAndRepair.Localization
         public static readonly MyStringId WeldMode_Skeleton;
         public static readonly MyStringId WeldPriority;
         public static readonly MyStringId WeldPriority_Tooltip;
+        public static readonly MyStringId WeldIgnorePriority;
+        public static readonly MyStringId WeldIgnorePriority_Tooltip;
 
         public static readonly MyStringId GrindSettings_Headline;
         public static readonly MyStringId GrindHeadline_Tooltip;
@@ -151,6 +153,8 @@ namespace STGTieredBuildAndRepair.Localization
             WeldMode_Skeleton = LocalizationHelper.GetStringId(texts, "WeldMode_Skeleton");
             WeldPriority = LocalizationHelper.GetStringId(texts, "WeldPriority");
             WeldPriority_Tooltip = LocalizationHelper.GetStringId(texts, "WeldPriority_Tooltip", TextDefaultMaxTooltipLength);
+            WeldIgnorePriority = LocalizationHelper.GetStringId(texts, "WeldIgnorePriority");
+            WeldIgnorePriority_Tooltip = LocalizationHelper.GetStringId(texts, "WeldIgnorePriority_Tooltip", TextDefaultMaxTooltipLength);
 
             GrindSettings_Headline = LocalizationHelper.GetStringId(texts, "GrindSettings_Headline");
             GrindUseGrindColor = LocalizationHelper.GetStringId(texts, "GrindUseGrindColor");

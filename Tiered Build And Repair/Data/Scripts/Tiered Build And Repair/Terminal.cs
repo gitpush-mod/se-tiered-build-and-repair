@@ -306,6 +306,10 @@ namespace STGTieredBuildAndRepair
                             // --- List Weld Priority ---
                             var listbox = ListBoxes.CreateWeldPriority(weldingAllowed, isReadonly, isBaRSystem, isWeldingAllowed);
                             _WeldPriorityListBox = listbox;
+
+                            // --- WeldIgnorePriorityOrder --- (issue #3: mirror of the grind switch)
+                            onoffSwitch = OnOffSwitches.CreateWeldIgnorePriorityOrder(weldingAllowed, isWeldingAllowed, isReadonly, isBaRSystem);
+                            CreateProperty(onoffSwitch);
                         }
                     }
 

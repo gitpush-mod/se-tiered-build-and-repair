@@ -1398,6 +1398,12 @@ namespace STGTieredBuildAndRepair
         /// </summary>
         private int CompareWeldPriority(IMySlimBlock blockA, IMySlimBlock blockB)
         {
+            // Issue #3: mirror of GrindIgnorePriorityOrder. Every caller of this method
+            // falls through to a distance compare when it returns 0, so reporting "equal"
+            // here yields distance-only ordering. The enabled/disabled state of block types
+            // is unaffected -- that is filtered during collection, not here.
+            if ((Settings.Flags & SyncBlockSettings.Settings.WeldIgnorePriorityOrder) != 0) return 0;
+
             var priorityA = BlockWeldPriority.GetPriority(blockA);
             var priorityB = BlockWeldPriority.GetPriority(blockB);
             return priorityA - priorityB;
@@ -1457,6 +1463,9 @@ namespace STGTieredBuildAndRepair
             var grindNearFirst = isGrinding && (Settings.Flags & SyncBlockSettings.Settings.GrindNearFirst) != 0;
             var grindSmallestFirst = isGrinding && (Settings.Flags & SyncBlockSettings.Settings.GrindSmallestGridFirst) != 0;
             var grindIgnorePriority = isGrinding && (Settings.Flags & SyncBlockSettings.Settings.GrindIgnorePriorityOrder) != 0;
+            // Issue #3: the weld branch below compares priority inline rather than calling
+            // CompareWeldPriority, so it needs its own check.
+            var weldIgnorePriority = !isGrinding && (Settings.Flags & SyncBlockSettings.Settings.WeldIgnorePriorityOrder) != 0;
 
             // Capture snapshot presence once — comparator runs many times and the field
             // is only written at scan start / cleared in finally (same background thread).
@@ -1613,7 +1622,7 @@ namespace STGTieredBuildAndRepair
 
                     // grindSmallestFirst is a no-op for per-grid sort (same grid for all).
                 }
-                else
+                else if (!weldIgnorePriority)
                 {
                     // Weld: priority-only compare.
                     int priA, priB;

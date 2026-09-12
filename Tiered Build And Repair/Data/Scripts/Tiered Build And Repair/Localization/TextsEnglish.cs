@@ -30,6 +30,8 @@ namespace STGTieredBuildAndRepair.Localization
             {"WeldMode_Skeleton",               "Skeleton only"},
             {"WeldPriority",                    "Welding Priority"},
             {"WeldPriority_Tooltip",            "Enable/Disable build-repair of selected items kinds"},
+            {"WeldIgnorePriority",              "Ignore priority order"},
+            {"WeldIgnorePriority_Tooltip",      "When checked, the priority order is ignored and blocks are welded by distance only. Enabled/disabled state of block types is still respected."},
 
             {"GrindSettings_Headline",          "—————— Settings for Grinding ——————"},
             {"GrindUseGrindColor",              "Use Grind Color"},

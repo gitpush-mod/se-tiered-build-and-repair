@@ -30,6 +30,8 @@ namespace STGTieredBuildAndRepair.Localization
             {"WeldMode_Skeleton",               "Только каркас"},
             {"WeldPriority",                    "Приоритет сварки"},
             {"WeldPriority_Tooltip",            "Включить/выключить сборку-ремонт выбранных видов предметов."},
+            {"WeldIgnorePriority",              "Игнорировать порядок приоритетов"},
+            {"WeldIgnorePriority_Tooltip",      "Если включено, порядок приоритетов игнорируется и блоки свариваются только по расстоянию. Статус включения/отключения типов блоков по-прежнему учитывается."},
 
             {"GrindSettings_Headline",          "——————— Настройки для распиливания ———————"},
             {"GrindUseGrindColor",              "Цвет для распиливания"},

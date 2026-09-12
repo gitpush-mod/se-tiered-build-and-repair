@@ -30,6 +30,8 @@ namespace STGTieredBuildAndRepair.Localization
             {"WeldMode_Skeleton",               "Nur Skelett"},
             {"WeldPriority",                    "Schweiß Priorität"},
             {"WeldPriority_Tooltip",            "Schaltet das Erzeugen/Reparieren der selektierten Typen von Blöcken ein/aus"},
+            {"WeldIgnorePriority",              "Prioritätsreihenfolge ignorieren"},
+            {"WeldIgnorePriority_Tooltip",      "Wenn aktiv, wird die Prioritätsreihenfolge ignoriert und Blöcke werden nur nach Entfernung geschweißt. Aktiviert/deaktiviert Status der Blocktypen wird weiterhin beachtet."},
 
             {"GrindSettings_Headline",          "——Einstellungen fürs Demontieren——"},
             {"GrindUseGrindColor",              "Demontierfarbe verwenden"},

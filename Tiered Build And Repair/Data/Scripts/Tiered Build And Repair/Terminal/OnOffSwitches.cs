@@ -799,6 +799,50 @@ namespace STGTieredBuildAndRepair.Terminal
             return control;
         }
 
+        public static IMyTerminalControlOnOffSwitch CreateWeldIgnorePriorityOrder(bool weldingAllowed, Func<IMyTerminalBlock, bool> isWeldingAllowed, Func<IMyTerminalBlock, bool> isReadonly, Func<IMyTerminalBlock, bool> isBaRSystem)
+        {
+            var isEnabled = weldingAllowed ? isBaRSystem : isReadonly;
+
+            var control = Create(
+                // Id:
+                "WeldIgnorePriorityOrder",
+
+                // Texts
+                Texts.WeldIgnorePriority,
+                Texts.WeldIgnorePriority_Tooltip,
+                MySpaceTexts.SwitchText_On,
+                MySpaceTexts.SwitchText_Off,
+
+                // Visible:
+                isWeldingAllowed,
+
+                // Enabled:
+                isEnabled,
+
+                // Getter:
+                (block) =>
+                {
+                    var system = NanobotTerminal.GetSystem(block);
+                    return system != null ? ((system.Settings.Flags & SyncBlockSettings.Settings.WeldIgnorePriorityOrder) != 0) : false;
+                },
+
+                // Setter:
+                (block, value) =>
+                {
+                    var system = NanobotTerminal.GetSystem(block);
+                    if (system != null && isWeldingAllowed(block))
+                    {
+                        system.Settings.Flags = (system.Settings.Flags & ~SyncBlockSettings.Settings.WeldIgnorePriorityOrder) | (value ? SyncBlockSettings.Settings.WeldIgnorePriorityOrder : 0);
+                    }
+                },
+
+                // Multiple blocks support.
+                true
+            );
+
+            return control;
+        }
+
         public static IMyTerminalControlOnOffSwitch CreateGrindIgnorePriorityOrder(bool grindingAllowed, Func<IMyTerminalBlock, bool> isGrindingAllowed, Func<IMyTerminalBlock, bool> isReadonly, Func<IMyTerminalBlock, bool> isBaRSystem)
         {
             var isEnabled = grindingAllowed ? isBaRSystem : isReadonly;

@@ -29,6 +29,9 @@ namespace STGTieredBuildAndRepair.Models
             GrindIgnorePriorityOrder = 0x00000400,
             DisableTickingSound = 0x00000800,
             DisableParticleEffects = 0x00001000,
+            // Weld mirror of GrindIgnorePriorityOrder (issue #3). Takes the next free bit;
+            // 0x800/0x1000 were already claimed by the sound/particle flags.
+            WeldIgnorePriorityOrder = 0x00002000,
             ComponentCollectIfIdle = 0x00010000,
             PushIngotOreImmediately = 0x00020000,
             PushComponentImmediately = 0x00040000,
@@ -776,6 +779,9 @@ namespace STGTieredBuildAndRepair.Models
             UseGrindJanitorOn &= tier.AllowedGrindJanitorRelations;
 
             if (init) Flags = Flags | Settings.GrindIgnorePriorityOrder;
+            // Deliberately NOT defaulted on, unlike the grind flag above: welding has always
+            // honoured the priority order, and switching that off by default would silently
+            // change repair behaviour for every existing player.
             if (Mod.Settings.Welder.ShowAreaFixed || init) Flags = (Flags & ~Settings.ShowArea);
             if (Mod.Settings.Welder.PushIngotOreImmediatelyFixed || init) Flags = (Flags & ~Settings.PushIngotOreImmediately) | (Mod.Settings.Welder.PushIngotOreImmediatelyDefault ? Settings.PushIngotOreImmediately : 0);
             if (Mod.Settings.Welder.PushComponentImmediatelyFixed || init) Flags = (Flags & ~Settings.PushComponentImmediately) | (Mod.Settings.Welder.PushComponentImmediatelyDefault ? Settings.PushComponentImmediately : 0);
